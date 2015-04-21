@@ -77,7 +77,10 @@ class VpmPackager {
 
 	function render() {
 		$args = array(
-			'post_type' => 'packages',
+			'post_type'      => 'packages',
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+			'posts_per_page' => -1,
 		);
 
 		$packages = new WP_Query( $args );
@@ -90,8 +93,8 @@ class VpmPackager {
 				$pkg_versions = array();
 				$versions     = CFS()->get('versions');
 
-				$pkg_name    = CFS()->get('name');
-				$pkg_type    = CFS()->get('type');
+				$pkg_name = CFS()->get('name');
+				$pkg_type = CFS()->get('type');
 
 				foreach ( $versions as $version ) {
 					$pkg_version = $version['version'];
