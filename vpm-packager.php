@@ -97,6 +97,9 @@ class VpmPackager {
 				$pkg_type = CFS()->get('type');
 
 				foreach ( $versions as $version ) {
+					if ( empty( $version['version'] ) || empty( $version['file'] ) )
+						continue;
+
 					$pkg_version = $version['version'];
 					$pkg_file    = wp_get_attachment_url( $version['file'] );
 
